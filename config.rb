@@ -20,3 +20,7 @@ activate :deploy do |deploy|
   deploy.build_before = true
   deploy.deploy_method = :git
 end
+
+data.flats.each do |owner|
+  proxy "/flats/#{owner.first}.html", "/flats/show.html", locals: { owner: owner.first }, ignore: true
+end
